@@ -1,0 +1,23 @@
+html, body, div, span, input, p,h1, h2, h3, h4, h5, h6, blockquote, a, abbr, acronym, address, strong, b, u, i, center,dl, dt, dd, ol, ul,td,tr
+{
+    font-family:"Microsoft Yahei","Î¢ÈíÑÅºÚ","ËÎÌå", "Simsun", "Open Sans";
+}
+
+.table-scrollable {
+  border-top: 3px solid #dddddd;
+}
+
+.search-form label { 
+    margin:2px 5px 5px 5px;
+    float: right;
+}
+
+.search-form .form-control { 
+    display:inline-block;
+    width:120px;
+    padding:3px 6px; 
+}
+
+.check-horizon {
+    margin:0 20px;
+}

@@ -1,0 +1,37 @@
+﻿@using NextCMS.Web.Framework.UI;
+@{
+    //success messages
+    var successMessages = new List<string>();
+    if (TempData[string.Format("nextcms.notifications.{0}", NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(TempData[string.Format("nextcms.notifications.{0}", NotifyType.Success)] as IList<string>);
+    }
+    if (ViewData[string.Format("nextcms.notifications.{0}", NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(ViewData[string.Format("nextcms.notifications.{0}", NotifyType.Success)] as IList<string>);
+    }
+
+    //error messages
+    var errorMessages = new List<string>();
+    if (TempData[string.Format("nextcms.notifications.{0}", NotifyType.Error)] != null)
+    {
+        errorMessages.AddRange(TempData[string.Format("nextcms.notifications.{0}", NotifyType.Error)] as IList<string>);
+    }
+    if (ViewData[string.Format("nextcms.notifications.{0}", NotifyType.Error)] != null)
+    {
+        errorMessages.AddRange(ViewData[string.Format("nextcms.notifications.{0}", NotifyType.Error)] as IList<string>);
+    }
+}
+
+@foreach (var message in successMessages)
+{
+    <div class="alert alert-success messageBox" role="alert">
+        @message
+    </div>
+}
+@foreach (var message in errorMessages)
+{
+    <div class="alert alert-danger messageBox" role="alert">
+        @message
+    </div>
+}

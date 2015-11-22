@@ -1,0 +1,53 @@
+﻿@model RoleModel
+
+@Html.ValidationSummary(false)
+@Html.HiddenFor(model => model.Id)
+
+<div class="tabbable tabbable-custom tabbable-full-width">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#tab_1" data-toggle="tab">基本信息</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab_1">
+            <div class="form-body">
+                <div class="form-group">
+                    <label class="control-label col-md-2">名称</label>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(t => t.Name, new { @class = "form-control" })
+                        <span class="help-block">
+                            @Html.ValidationMessageFor(t => t.Name)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">系统名称</label>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(t => t.SystemName, new { @class = "form-control" })
+                        <span class="help-block">
+                            @Html.ValidationMessageFor(t => t.SystemName)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">已启用</label>
+                    <div class="col-md-4">
+                        <div class="checkbox-list">
+                            <label class="checkbox-inline">
+                                @*<div class="checker" id="uniform-inlineCheckbox21">
+                                    <span class="">*@
+                                @Html.CheckBoxFor(t => t.Active)
+                                @*</span>
+                                    </div>*@
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

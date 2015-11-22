@@ -1,0 +1,76 @@
+﻿@model ArticleSettingsModel
+
+<h3 class="page-title-recover">
+    <span>文章设置</span> <small></small>
+</h3>
+
+<div class="portlet box">
+    <div class="portlet-body form">
+        @using (Html.BeginForm("Article", "Setting", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <div class="form-body">
+                @Html.ValidationSummary(false)
+                <div class="tabbable tabbable-custom tabbable-full-width">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#tab_1" data-toggle="tab">基本设置</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">文章列表数</label>
+                                    <div class="col-md-3">
+                                        @Html.TextBoxFor(t => t.ArticlePageSize, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">阅读排行榜列表数</label>
+                                    <div class="col-md-3">
+                                        @Html.TextBoxFor(t => t.HotArticlePageSize, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">评论排行榜列表数</label>
+                                    <div class="col-md-3">
+                                        @Html.TextBoxFor(t => t.HotCommentPageSize, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">评论列表数</label>
+                                    <div class="col-md-3">
+                                        @Html.TextBoxFor(t => t.CommentPageSize, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">最新评论列表数</label>
+                                    <div class="col-md-3">
+                                        @Html.TextBoxFor(t => t.LatestCommentPageSize, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">允许评论</label>
+                                    <div class="col-md-3">
+                                        <div class="checkbox-list">
+                                            <label class="checkbox-inline">
+                                                @Html.CheckBoxFor(t => t.AllowComment)
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-actions fluid">
+                <div class="col-md-offset-2 col-md-9">
+                    <input type="submit" name="save" class="btn blue" value="保存" />
+                    <input type="submit" name="save-continue" class="btn dark" value="保存并继续" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

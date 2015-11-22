@@ -1,0 +1,22 @@
+﻿@model RoleModel
+
+<h3 class="page-title-recover">
+    <span>添加角色</span> <small></small>
+</h3>
+
+<div class="portlet box">
+    <div class="portlet-body form">
+        @using (Html.BeginForm("Create", "Role", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <div class="form-body">
+                @Html.Partial("_CreateOrUpdate", Model)
+            </div>
+            <div class="form-actions fluid">
+                <div class="col-md-offset-2 col-md-9">
+                    <input type="submit" name="save" class="btn blue" value="保存" />
+                    <input type="submit" name="save-continue" class="btn dark" value="保存并继续" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

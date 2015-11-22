@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{A1961001-2FBC-409D-B0C8-9699D9B5BB56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AD43D870-44A6-4098-8148-A631E9440372}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{28527585-D7D1-4F07-AB3B-28865401BE78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextCMS.Core", "Libraries\NextCMS.Core\NextCMS.Core.csproj", "{3226CB1F-8576-46FC-B5BC-97A892FF86D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextCMS.Data", "Libraries\NextCMS.Data\NextCMS.Data.csproj", "{D6919D16-A716-4973-8BEE-F7EE2FFAC1FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextCMS.Services", "Libraries\NextCMS.Services\NextCMS.Services.csproj", "{17265619-DEE0-4E1C-A642-EE2B260D93C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextCMS.Web.Framework", "Presentation\NextCMS.Web.Framework\NextCMS.Web.Framework.csproj", "{0C5F7E8C-1B01-482B-9B72-2FB6E0BD24E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextCMS.Web", "Presentation\NextCMS.Web\NextCMS.Web.csproj", "{2EE93FDE-482E-4912-A340-2CEA4CA59C43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextCMS.Admin", "Presentation\NextCMS.Web\Administration\NextCMS.Admin.csproj", "{4FECA22A-5834-4EED-9D3E-9D17D86E5444}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3226CB1F-8576-46FC-B5BC-97A892FF86D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3226CB1F-8576-46FC-B5BC-97A892FF86D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3226CB1F-8576-46FC-B5BC-97A892FF86D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3226CB1F-8576-46FC-B5BC-97A892FF86D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6919D16-A716-4973-8BEE-F7EE2FFAC1FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6919D16-A716-4973-8BEE-F7EE2FFAC1FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6919D16-A716-4973-8BEE-F7EE2FFAC1FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6919D16-A716-4973-8BEE-F7EE2FFAC1FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17265619-DEE0-4E1C-A642-EE2B260D93C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17265619-DEE0-4E1C-A642-EE2B260D93C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17265619-DEE0-4E1C-A642-EE2B260D93C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17265619-DEE0-4E1C-A642-EE2B260D93C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C5F7E8C-1B01-482B-9B72-2FB6E0BD24E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C5F7E8C-1B01-482B-9B72-2FB6E0BD24E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C5F7E8C-1B01-482B-9B72-2FB6E0BD24E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C5F7E8C-1B01-482B-9B72-2FB6E0BD24E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE93FDE-482E-4912-A340-2CEA4CA59C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE93FDE-482E-4912-A340-2CEA4CA59C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE93FDE-482E-4912-A340-2CEA4CA59C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE93FDE-482E-4912-A340-2CEA4CA59C43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FECA22A-5834-4EED-9D3E-9D17D86E5444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FECA22A-5834-4EED-9D3E-9D17D86E5444}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FECA22A-5834-4EED-9D3E-9D17D86E5444}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FECA22A-5834-4EED-9D3E-9D17D86E5444}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3226CB1F-8576-46FC-B5BC-97A892FF86D9} = {A1961001-2FBC-409D-B0C8-9699D9B5BB56}
+		{D6919D16-A716-4973-8BEE-F7EE2FFAC1FB} = {A1961001-2FBC-409D-B0C8-9699D9B5BB56}
+		{17265619-DEE0-4E1C-A642-EE2B260D93C5} = {A1961001-2FBC-409D-B0C8-9699D9B5BB56}
+		{0C5F7E8C-1B01-482B-9B72-2FB6E0BD24E5} = {28527585-D7D1-4F07-AB3B-28865401BE78}
+		{2EE93FDE-482E-4912-A340-2CEA4CA59C43} = {28527585-D7D1-4F07-AB3B-28865401BE78}
+		{4FECA22A-5834-4EED-9D3E-9D17D86E5444} = {28527585-D7D1-4F07-AB3B-28865401BE78}
+	EndGlobalSection
+EndGlobal

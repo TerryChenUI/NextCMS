@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "标签管理 | NextCMS Admin";
+}
+
+<div class="fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="table-toolbar">
+                <div class="btn-group">
+                    <a href="@Url.Action("Create")" class="btn blue"><i class="fa fa-plus"></i> 添加</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table datatable table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th width="80">
+                    序号
+                </th>
+                <th width="200">
+                    名称
+                </th>
+                <th>
+                    描述
+                </th>
+                <th width="200">
+                    操作
+                </th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+@Html.WriteScriptBlock(@<script type="text/javascript">
+    $(function () {
+        var actionUrl = "@Url.Action("InitDataTable")?rand=" + Math.random();
+        var aoColumns = [
+                { "sName": "sort" },
+                { "sName": "name" },
+                { "sName": "description" },
+                {
+                    "sName": "action",
+                    "fnRender": function (oObj) {
+                        var editUrl = '@Url.Action("Edit")/' + oObj.aData[oObj.aData.length - 1];
+                        var deleteUrl = '@Url.Action("Delete")/' + oObj.aData[oObj.aData.length - 1];
+                        return TableManaged.btnEdit(editUrl) + ' ' + TableManaged.btnDelete(deleteUrl);
+                    }
+                }
+        ];
+
+        TableManaged.init($(".datatable"), actionUrl, aoColumns);
+    });
+</script>)
+

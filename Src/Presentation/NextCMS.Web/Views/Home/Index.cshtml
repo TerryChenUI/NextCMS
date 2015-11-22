@@ -1,0 +1,41 @@
+﻿@using NextCMS.Core;
+
+@model HomeModel
+@{
+    ViewBag.Title = string.Format("{0} {1} 更简单更好用的内容管理系统", this.WorkContext.GeneralSettings.SiteTitle, this.WorkContext.GeneralSettings.Separator);
+}
+
+
+<div class="container">
+    <div class="main">
+        <div class="content">
+            <div class="recommand">
+                <h2 class="title">置顶推荐</h2>
+                <ul>
+                    @foreach (var article in Model.RecommandArticles)
+                    {
+                        <li class="item">
+                            <a href="@Url.Action("Detail", "Article", new { id = article.Id})">
+                                <img src="@article.PictureCoverImg" alt="@article.Title"/><h3>@article.Title</h3><p class="muted">
+                                    @article.ShortDescription
+                                </p>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="latest">
+                <h2 class="title">最新发布</h2>
+                @Html.Partial("_ArticleList", Model.Articles)
+            </div>
+        </div>
+        <div class="sidebar">
+            @Html.Action("HotArticle", "Article")
+            @Html.Action("CommentArticle", "Article")
+        </div>
+   </div>
+</div>
+
+
+
+

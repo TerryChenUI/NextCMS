@@ -1,0 +1,13 @@
+﻿@model IEnumerable<ArticleModel>
+@{ var i = 1; }
+
+<div class="side-content">
+    <h2 class="title">阅读最多</h2>
+    <ul>
+        @foreach (var article in Model)
+        {
+            <li><span class="@if(i > 3){ @("normal") }else{ @("tophit")}">@i</span><div><a href="@Url.Action("Detail", "Article", new { id = @article.Id})" title="@article.Title">@article.Title</a></div></li>
+            i++;
+        }  
+    </ul>
+</div>

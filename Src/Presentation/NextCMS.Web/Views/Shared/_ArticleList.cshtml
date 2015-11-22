@@ -1,0 +1,45 @@
+﻿@using NextCMS.Core.Domain.Catalog;
+@model IPagedList<Article>
+@{
+    var pictureService = EngineContext.Current.Resolve<NextCMS.Services.Media.IPictureService>();
+        
+    var idRD = ViewContext.RouteData.Values["id"];
+    int id = idRD != null ? Convert.ToInt32(idRD) : 0;
+}
+
+@if (Model.Any())
+{
+    foreach (var article in Model)
+    {
+        <div class="post">
+            <a class="post-thumb" title="@article.Title" href="@Url.Action("Detail", "Article", new { id = article.Id })">
+                <img alt="@article.Title" src="@(pictureService.GetPictureUrl(article.PictureId, 250, true))">
+            </a>
+            <div class="post-body">
+                <h2 class="post-title"><a title="@article.Title" href="@Url.Action("Detail", "Article", new { id = article.Id })">@article.Title</a></h2>
+                <div class="post-meta">
+                    <span class="post-date">@("NextCMS") - 发布于 @article.CreateDate </span>
+                    <span class="post-category">
+                        @if (article.Category != null)
+                        {
+                            <a href="@Url.Action("List", "Article", new { id = article.Category.Id })">@article.Category.Name</a>
+                        }
+                    </span>
+                    <span class="post-views"><a href="@Url.Action("Detail", "Article", new { id = article.Id })">@(article.Views)次阅读</a></span>
+                    <span class="post-comment"><a href="@Url.Action("Detail", "Article", new { id = article.Id })">@(article.CommentCount)条评论</a></span>
+                </div>
+                <div class="post-summary">
+                    <p>@article.ShortDescription</p>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<div class="list-pagination">
+    @Html.Pager(Model.PageSize, Model.PageNumber, Model.TotalItemCount).Options(o => o
+                    .DisplayTemplate("Bootstrap3Pagination")
+                    .AddRouteValue("id", id)
+                    .MaxNrOfPages(10)
+                    .AlwaysAddFirstPageNumber())
+</div>

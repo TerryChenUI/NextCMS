@@ -1,0 +1,61 @@
+﻿@media only screen and (max-width: 1280px) {
+    .content {
+        width: 62%;
+    }
+}
+
+@media only screen and (max-width: 1130px) {
+    .content {
+        width: 56%;
+    }
+}
+
+@media only screen and (max-width: 980px) {
+    .main-full {
+        padding: 5px;
+    }
+
+    .content {
+        padding: 20px;
+        width: 100%;
+    }
+
+    .sidebar {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    
+}
+
+@media only screen and (max-width: 480px) {
+    .main-full {
+        padding: 5px;
+    }
+
+    .content {
+        padding:5px 10px;
+        width:100%;
+    }
+
+    .post {
+        padding:10px 0 5px 0;
+    }
+
+    .post-body {
+        float:none;
+        width:100%;
+    }
+        .post-title a {
+            font-size: 16px;
+        }
+
+    .post-thumb {
+        padding-right: 5px;
+    }
+
+    .post-category, .post-excerpt {
+        display: none;
+    }
+}

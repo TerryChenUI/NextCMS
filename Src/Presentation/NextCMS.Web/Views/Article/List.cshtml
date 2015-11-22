@@ -1,0 +1,28 @@
+﻿@model ArticleListModel
+@{
+    ViewBag.Title = string.Format("{0} {1} {2}", Model.CategoryName, this.WorkContext.GeneralSettings.Separator, this.WorkContext.GeneralSettings.SiteTitle);
+}
+
+<div class="container">
+    <div class="main">
+        <div class="content">
+            <div class="list-header">
+                <h1><a href="@Url.Action("List", "Article", new { id = Model.CategoryId})">@Model.CategoryName</a></h1>
+                <div class="list-header-info">
+                    <p>@Model.Description</p>
+                </div>
+            </div>
+            @Html.Partial("_ArticleList", Model.Articles)
+        </div>
+
+        <div class="sidebar">
+            @Html.Action("HotArticle", "Article")
+            @Html.Action("CommentArticle", "Article")
+        </div>
+
+    </div>
+</div>
+
+
+
+

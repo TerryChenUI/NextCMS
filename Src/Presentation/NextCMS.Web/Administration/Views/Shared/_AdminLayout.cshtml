@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta name="MobileOptimized" content="320">
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    @Styles.Render("~/bundles/admin/css")
+
+    <link href="/Administration/Content/assets/css/themes/default.css" rel="stylesheet" id="style_color" />
+
+    @Styles.Render("~/bundles/admin/grid/css")
+
+    @RenderSection("css", false)
+    
+</head>
+
+<!-- Body开始 -->
+<body class="page-header-fixed">
+    <!-- 顶部 -->
+    <div class="header navbar navbar-inverse navbar-fixed-top">
+        <!-- 导航 -->
+        <div class="header-inner">
+            <!-- logo -->
+            <a class="navbar-brand" href="index.html">
+                <img src="~/Administration/Content/assets/img/logo.png" alt="logo" class="img-responsive" />
+            </a>
+
+            <!-- 响应式切换按钮 -->
+            <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <img src="~/Administration/Content/assets/img/menu-toggler.png" alt="" />
+            </a>
+
+            <!-- 导航菜单 -->
+            @Html.Partial("HeaderMenu")
+
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+
+    <div class="page-container">
+
+        <!-- 侧边栏菜单 -->
+        @*@Html.Partial("SidebarMenu")*@
+        @Html.Action("SidebarMenu", "Common")
+
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                
+                <!-- Modal 弹出窗口 -->
+                @Html.Partial("Modal")
+
+                <!-- 主题设置 -->
+                @Html.Partial("ThemeSetting")
+
+                <!-- 面包屑 -->
+                @Html.Partial("Breadcrumb")
+
+                <!-- 消息通知 -->
+                @Html.Partial("Notifications")
+
+                <!-- 正文开始 -->
+                @RenderBody()
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部开始 -->
+    @Html.Partial("Footer");
+    
+    <!--[if lt IE 9]>
+    <script src="~/Administration/Content/assets/plugins/respond.min.js"></script>
+    <script src="~/Administration/Content/assets/plugins/excanvas.min.js"></script>
+    <![endif]-->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/admin/js")
+    @Scripts.Render("~/bundles/admin/grid/js")
+
+
+    @RenderSection("scripts", false) 
+
+    @Html.RenderScriptBlocks()
+
+    <script type="text/javascript">
+    $(function() {
+       App.init(); // initlayout and core plugins
+       //Index.init();
+       //Index.initJQVMAP(); // init index page's custom scripts
+       //Index.initCalendar(); // init index page's custom scripts
+       //Index.initCharts(); // init index page's custom scripts
+       //Index.initChat();
+       //Index.initMiniCharts();
+       //Index.initDashboardDaterange();
+       //Index.initIntro();
+       //Tasks.initDashboardWidget();
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+﻿@model PermissionRoleModel
+@{
+    ViewBag.Title = "访问控制 | NextCMS Admin";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="table-toolbar">
+                    <div class="btn-group">
+                        <button type="submit" class="btn blue">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 列表 -->
+    <div class="table-responsive">
+        <table class="table datatable table-striped table-bordered table-hover">
+            <tr>
+                <th scope="col">
+                    <strong>权限名称</strong>
+                </th>
+                @foreach (var rs in Model.AvailableRoles)
+                {
+                    <th scope="col">
+                        <strong>@rs.Name</strong>
+                        <input type="checkbox" id="selectall-@(rs.Id)" />
+                    </th>
+                }
+            </tr>
+            @{
+    bool altRow = true;
+            }
+            @foreach (var ps in Model.AvailablePermissions)
+            {
+                var key = ps.Id.ToString();
+                var index = "";
+                if (ps.ParentId == 0)
+                {
+                    index = ps.Id.ToString();
+                }
+                else
+                {
+                    
+                }
+                altRow = !altRow;
+                <tr class="@(altRow ? "altrowstyle" : "rowstyle")">
+                    <td>
+                        <span>@ps.Name</span>
+                    </td>
+                    @foreach (var rs in Model.AvailableRoles)
+                    {
+                        var allowed = Model.Allowed.ContainsKey(key) && Model.Allowed[key][rs.Id];
+                        <td>
+                            <input type="checkbox" class="ctx allow_@(rs.Id)" index="@(rs.Id + "_" + ps.IndexKey)" value="@(key)" name="allow_@(rs.Id)" @(allowed ? " checked=checked" : null) />
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+}
+
+@Html.WriteScriptBlock(@<script type="text/javascript">
+    $(function () {
+        @foreach (var rs in Model.AvailableRoles)
+        {
+            <text>
+        $('#selectall-@(rs.Id)').change(function () {
+            $.uniform.update($('.allow_@(rs.Id)').prop('checked', $(this).is(':checked')).change());
+        });
+
+        </text>
+        }
+
+        //权限级联选中
+        $("input.ctx:checkbox").click(function () {
+
+            //规则
+            //1-1_1_1, 1-1_1_2, 1-1_1_3, 1-1_2_1， 
+
+            //选中当前的
+            var currentIndex = $(this).attr("index");
+            var currentSelect = $(this).is(":checked");
+            $.uniform.update($("input.ctx:checkbox[index=" + currentIndex + "]").attr("checked", currentSelect));
+
+            // 为父节点，即其子节点也要选中
+            if (currentIndex.length == 3) {
+                $.uniform.update($("input.ctx:checkbox[index^=" + currentIndex + "]").attr("checked", currentSelect));
+            } else {
+
+                //父节点与子节点都有，递归
+                CascadeCheck(currentIndex, this);
+            }
+        });
+    });
+
+    function CascadeCheck(currentIndex, target) {
+
+        var currentSelect = $(target).is(":checked");
+        var newIndex = currentIndex.substring(0, currentIndex.length - 2);
+
+        $.uniform.update($("input.ctx:checkbox[index^=" + currentIndex + "]").attr("checked", currentSelect));
+
+        var parentCheckLength = $("input.ctx:checkbox[index^=" + newIndex + "]:checked").length;
+
+        if (parentCheckLength > 0) {
+            $.uniform.update($("input.ctx:checkbox[index=" + newIndex + "]").attr("checked", true));
+        } else {
+            $.uniform.update($("input.ctx:checkbox[index=" + newIndex + "]").attr("checked", false));
+        }
+
+        if (newIndex.length > 3) {
+            CascadeCheck(newIndex, target);
+        }
+
+        //$.uniform.update($("input.ctx:checkbox[index=" + parent_index + "]").attr("checked", currentSelect));
+
+        //var parentIsCheck = false;
+        //$("input.ctx:checkbox[index^=" + parent_index + "]").each(function (i) {
+        //    if ($(this).is(":checked")) {
+        //        parentIsCheck = true;
+        //    }
+        //});
+        //$("input.ctx:checkbox[index=" + parent_index + "]").attr("checked", parentIsCheck);
+        //var parent_parent_index = index.substring(0, parent_index.length - 2);
+        //var parent_parent_is_check = false;
+        //$("input.ctx:checkbox[index=" + parent_parent_index + "]").attr("checked", parent_parent_is_check);
+        //$("input.ctx:checkbox[index^=" + parent_parent_index + "]").each(function (i) {
+        //    if ($(this).is(":checked")) {
+        //        parent_parent_is_check = true;
+        //    }
+        //});
+        //$("input.ctx:checkbox[index=" + parent_parent_index + "]").attr("checked", parent_parent_is_check);
+    }
+
+    </script>)

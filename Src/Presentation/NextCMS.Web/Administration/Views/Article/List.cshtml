@@ -1,0 +1,99 @@
+﻿@model ArticleSearchModel
+
+@{
+    ViewBag.Title = "文章管理 | NextCMS Admin";
+}
+<div class="fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="table-toolbar">
+                <div class="btn-group">
+                    <a href="@Url.Action("Delete")" class="btn red"><i class="fa fa-trash-o"></i> 删除</a>
+                    <a href="@Url.Action("Create")" class="btn blue"><i class="fa fa-plus"></i> 添加</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <form class="search-form">
+                <label>
+                    <button type="button" class="btn dark btn-search" onclick="TableManaged.search('@Url.Action("InitDataTable")')"><i class="fa fa-search"></i> 搜索</button>
+                </label>
+                <label>
+                    <span>标题：</span>
+                    @Html.TextBoxFor(model => model.SearchTitle, new { @class = "form-control" })
+                </label>
+                <label>
+                    <span>分类：</span>
+                    @Html.DropDownListFor(model => model.SearchCategoryId, Model.SearchCategories, new { @class = "form-control" })
+                </label>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table datatable table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th width="80">
+                    序号
+                </th>
+                <th>
+                    标题
+                </th>
+                <th width="120">
+                    创建日期
+                </th>
+                <th width="100">
+                    页面浏览
+                </th>
+                <th width="80">
+                    评论
+                </th>
+                <th width="80">
+                    已启用
+                </th>
+                <th width="200">
+                    操作
+                </th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+@Html.WriteScriptBlock(@<script type="text/javascript">
+    $(function () {
+        var actionUrl = "@Url.Action("InitDataTable")?rand=" + Math.random();
+        var aoColumns = [
+                { "sName": "sort" },
+                { "sName": "title" },
+                { "sName": "createdondate" },
+                { "sName": "views" },
+                { "sName": "commentcount" },
+                {
+                    "sName": "published",
+                    //"fnRender": function (oObj) {
+                    //    var render;
+                    //    if (oObj.aData[oObj.aData.length - 3] == "True") {
+                    //        render = '<i class="fa fa-check "></i>';
+                    //    } else {
+                    //        render = '<i class="fa fa-lock"></i>';
+                    //    }
+                    //    return render;
+                    //}
+                },
+                {
+                    "sName": "action",
+                    "fnRender": function (oObj) {
+                        var editUrl = '@Url.Action("Edit")/' + oObj.aData[oObj.aData.length - 1];
+                        var deleteUrl = '@Url.Action("Delete")/' + oObj.aData[oObj.aData.length - 1];
+                        return TableManaged.btnEdit(editUrl) + ' ' + TableManaged.btnDelete(deleteUrl);
+                    }
+                }
+        ];
+
+        TableManaged.init($(".datatable"), actionUrl, aoColumns);
+    });
+</script>)
+

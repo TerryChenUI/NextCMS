@@ -1,0 +1,653 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2EE93FDE-482E-4912-A340-2CEA4CA59C43}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NextCMS.Web</RootNamespace>
+    <AssemblyName>NextCMS.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\..\packages\Autofac.Mvc5.3.3.3\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=5.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\FluentValidation.5.4.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc">
+      <HintPath>..\..\packages\FluentValidation.MVC5.5.4.0.0\lib\Net45\FluentValidation.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcPaging">
+      <HintPath>..\..\packages\MvcPaging.2.1.2\lib\net40\MvcPaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ArticleController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\BasePublicController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Extensions\HtmlExtensions.cs" />
+    <Compile Include="Extensions\ThemeableRazorViewEngine.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Articles\ArticleDetailModel.cs" />
+    <Compile Include="Models\Articles\ArticleListModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Articles\ArticleModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Common\PagerModel.cs" />
+    <Compile Include="Models\Common\TopMenuModel.cs" />
+    <Compile Include="Models\Home\HomeModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\global.css" />
+    <Content Include="Content\Images\default-avatar.jpg" />
+    <Content Include="Content\Images\default-image.gif" />
+    <Content Include="Content\Roxy_Fileman\css\images\animated-overlay.gif" />
+    <Content Include="Content\Roxy_Fileman\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\Roxy_Fileman\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\Roxy_Fileman\css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\Roxy_Fileman\css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\Roxy_Fileman\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\Roxy_Fileman\css\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\Roxy_Fileman\css\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\Roxy_Fileman\css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\Roxy_Fileman\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\Roxy_Fileman\css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\Roxy_Fileman\css\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\Roxy_Fileman\css\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\Roxy_Fileman\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\Roxy_Fileman\css\jquery-ui-1.10.4.custom.css" />
+    <Content Include="Content\Roxy_Fileman\css\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="Content\Roxy_Fileman\css\main.css" />
+    <Content Include="Content\Roxy_Fileman\css\main.min.css" />
+    <Content Include="Content\Roxy_Fileman\images\action-folder-paste.png" />
+    <Content Include="Content\Roxy_Fileman\images\action-folder-rename.png" />
+    <Content Include="Content\Roxy_Fileman\images\arrow_down.png" />
+    <Content Include="Content\Roxy_Fileman\images\arrow_up.png" />
+    <Content Include="Content\Roxy_Fileman\images\blank.gif" />
+    <Content Include="Content\Roxy_Fileman\images\copy.png" />
+    <Content Include="Content\Roxy_Fileman\images\cut.png" />
+    <Content Include="Content\Roxy_Fileman\images\dir-minus.png" />
+    <Content Include="Content\Roxy_Fileman\images\dir-plus.png" />
+    <Content Include="Content\Roxy_Fileman\images\file-add.png" />
+    <Content Include="Content\Roxy_Fileman\images\file-delete.png" />
+    <Content Include="Content\Roxy_Fileman\images\file-download.png" />
+    <Content Include="Content\Roxy_Fileman\images\file-duplicate.png" />
+    <Content Include="Content\Roxy_Fileman\images\file-upload.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_3gp.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_7z.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_ace.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_ai.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_aif.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_aiff.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_amr.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_asf.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_asx.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_bat.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_bin.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_bmp.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_bup.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_cab.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_cbr.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_cda.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_cdl.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_cdr.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_chm.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_dat.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_divx.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_dll.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_dmg.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_doc.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_dss.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_dvf.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_dwg.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_eml.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_eps.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_exe.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_fla.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_flv.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_gif.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_gz.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_hqx.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_htm.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_html.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_ifo.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_indd.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_iso.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_jar.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_jpeg.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_jpg.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_lnk.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_log.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_m4a.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_m4b.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_m4p.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_m4v.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_mcd.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_mdb.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_mid.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_mov.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_mp2.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_mp4.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_mpeg.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_mpg.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_msi.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_mswmm.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_ogg.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_pdf.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_png.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_pps.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_ps.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_psd.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_pst.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_ptb.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_pub.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_qbb.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_qbw.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_qxd.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_ram.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_rar.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_rm.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_rmvb.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_rtf.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_sea.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_ses.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_sit.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_sitx.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_ss.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_swf.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_tgz.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_thm.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_tif.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_tmp.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_torrent.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_ttf.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_txt.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_vcd.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_vob.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_wav.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_wma.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_wmv.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_wps.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_xls.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_xpi.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\file_extension_zip.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\big\unknown.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_3gp.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_7z.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_ace.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_ai.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_aif.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_aiff.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_amr.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_asf.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_asx.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_bat.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_bin.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_bmp.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_bup.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_cab.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_cbr.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_cda.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_cdl.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_cdr.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_chm.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_dat.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_divx.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_dll.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_dmg.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_doc.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_dss.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_dvf.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_dwg.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_eml.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_eps.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_exe.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_fla.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_flv.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_gif.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_gz.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_hqx.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_htm.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_html.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_ifo.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_indd.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_iso.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_jar.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_jpeg.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_jpg.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_lnk.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_log.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_m4a.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_m4b.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_m4p.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_m4v.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_mcd.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_mdb.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_mid.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_mov.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_mp2.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_mp4.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_mpeg.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_mpg.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_msi.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_mswmm.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_ogg.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_pdf.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_png.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_pps.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_ps.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_psd.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_pst.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_ptb.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_pub.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_qbb.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_qbw.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_qxd.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_ram.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_rar.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_rm.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_rmvb.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_rtf.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_sea.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_ses.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_sit.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_sitx.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_ss.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_swf.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_tgz.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_thm.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_tif.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_tmp.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_torrent.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_ttf.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_txt.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_vcd.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_vob.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_wav.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_wma.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_wmv.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_wps.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_xls.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_xpi.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\file_extension_zip.png" />
+    <Content Include="Content\Roxy_Fileman\images\filetypes\unknown.png" />
+    <Content Include="Content\Roxy_Fileman\images\find.png" />
+    <Content Include="Content\Roxy_Fileman\images\folder-add.png" />
+    <Content Include="Content\Roxy_Fileman\images\folder-delete.png" />
+    <Content Include="Content\Roxy_Fileman\images\folder-download.png" />
+    <Content Include="Content\Roxy_Fileman\images\folder-green.png" />
+    <Content Include="Content\Roxy_Fileman\images\folder-opened.png" />
+    <Content Include="Content\Roxy_Fileman\images\folder.png" />
+    <Content Include="Content\Roxy_Fileman\images\loading-dir.gif" />
+    <Content Include="Content\Roxy_Fileman\images\loading.gif" />
+    <Content Include="Content\Roxy_Fileman\images\paste.png" />
+    <Content Include="Content\Roxy_Fileman\images\preview.png" />
+    <Content Include="Content\Roxy_Fileman\images\rename.png" />
+    <Content Include="Content\Roxy_Fileman\images\search.png" />
+    <Content Include="Content\Roxy_Fileman\images\select.png" />
+    <Content Include="Content\Roxy_Fileman\images\upload-big.png" />
+    <Content Include="Content\Roxy_Fileman\images\view-list.png" />
+    <Content Include="Content\Roxy_Fileman\images\view-tile.png" />
+    <Content Include="Content\Roxy_Fileman\index.html" />
+    <Content Include="Content\Roxy_Fileman\js\custom.js" />
+    <Content Include="Content\Roxy_Fileman\js\directory.js" />
+    <Content Include="Content\Roxy_Fileman\js\file.js" />
+    <Content Include="Content\Roxy_Fileman\js\filetypes.js" />
+    <Content Include="Content\Roxy_Fileman\js\jquery-1.10.2.min.js" />
+    <Content Include="Content\Roxy_Fileman\js\jquery-dateFormat.min.js" />
+    <Content Include="Content\Roxy_Fileman\js\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="Content\Roxy_Fileman\js\main.js" />
+    <Content Include="Content\Roxy_Fileman\js\main.min.js" />
+    <Content Include="Content\Roxy_Fileman\js\mini-main.js" />
+    <Content Include="Content\Roxy_Fileman\js\tiny_mce_popup.js" />
+    <Content Include="Content\Roxy_Fileman\js\utils.js" />
+    <Content Include="Content\Roxy_Fileman\LICENSE.txt" />
+    <Content Include="Content\site.response.css" />
+    <Content Include="Content\tinymce\langs\zh_CN.js" />
+    <Content Include="Content\tinymce\license.txt" />
+    <Content Include="Content\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="Content\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\css\dialog-v4.css" />
+    <Content Include="Content\tinymce\plugins\jbimages\css\dialog.css" />
+    <Content Include="Content\tinymce\plugins\jbimages\dialog-v4.htm" />
+    <Content Include="Content\tinymce\plugins\jbimages\editor_plugin.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\editor_plugin_src.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\img\jbimages-bw.gif" />
+    <Content Include="Content\tinymce\plugins\jbimages\img\spinner.gif" />
+    <Content Include="Content\tinymce\plugins\jbimages\js\dialog-v4.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\js\dialog.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\langs\en.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\langs\en_dlg.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\langs\fr.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\langs\fr_dlg.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\langs\ru.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\langs\ru_dlg.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\plugin.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="Content\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="Content\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Content\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Content\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Content\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Content\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Content\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Content\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Content\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Content\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Content\tinymce\themes\modern\theme.min.js" />
+    <Content Include="Content\tinymce\tinymce.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\fineuploader\LICENSE" />
+    <Content Include="Content\tinymce\langs\readme.md" />
+    <Content Include="Content\tinymce\plugins\jbimages\readme" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\readme.md" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Content\Roxy_Fileman\conf.json" />
+    <Content Include="Content\Roxy_Fileman\js\fileman-modified.zip" />
+    <Content Include="Content\Roxy_Fileman\lang\bg.json" />
+    <Content Include="Content\Roxy_Fileman\lang\de.json" />
+    <Content Include="Content\Roxy_Fileman\lang\en.json" />
+    <Content Include="Content\Roxy_Fileman\lang\fr.json" />
+    <Content Include="Content\Roxy_Fileman\lang\cn.json" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\fineuploader\edit.gif" />
+    <Content Include="Scripts\fineuploader\fineuploader-4.2.2.css" />
+    <Content Include="Scripts\fineuploader\fineuploader-4.2.2.min.css" />
+    <Content Include="Scripts\fineuploader\iframe.xss.response-4.2.2.js" />
+    <Content Include="Scripts\fineuploader\jquery.fineuploader-4.2.2.js" />
+    <Content Include="Scripts\fineuploader\jquery.fineuploader-4.2.2.min.js" />
+    <Content Include="Scripts\fineuploader\loading.gif" />
+    <Content Include="Scripts\fineuploader\placeholders\not_available-generic.png" />
+    <Content Include="Scripts\fineuploader\placeholders\waiting-generic.png" />
+    <Content Include="Scripts\fineuploader\processing.gif" />
+    <Content Include="Scripts\fineuploader\templates\default.html" />
+    <Content Include="Scripts\fineuploader\templates\simple-thumbnails.html" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Common\Footer.cshtml" />
+    <Content Include="Views\Common\TopMenu.cshtml" />
+    <Content Include="Views\Article\Detail.cshtml" />
+    <Content Include="Views\Shared\Sidebar.cshtml" />
+    <Content Include="Views\Article\List.cshtml" />
+    <Content Include="Views\Shared\_ArticleList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Bootstrap3Pagination.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\BootstrapPagination.cshtml" />
+    <Content Include="Views\Shared\_HotArticle.cshtml" />
+    <Content Include="Views\Shared\_CommentArticle.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\thumbs\" />
+    <Folder Include="Content\Images\uploaded\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\NextCMS.Core\NextCMS.Core.csproj">
+      <Project>{3226cb1f-8576-46fc-b5bc-97a892ff86d9}</Project>
+      <Name>NextCMS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\NextCMS.Services\NextCMS.Services.csproj">
+      <Project>{17265619-dee0-4e1c-a642-ee2b260d93c5}</Project>
+      <Name>NextCMS.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NextCMS.Web.Framework\NextCMS.Web.Framework.csproj">
+      <Project>{0c5f7e8c-1b01-482b-9b72-2fb6e0bd24e5}</Project>
+      <Name>NextCMS.Web.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5854</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5854/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

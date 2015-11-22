@@ -1,0 +1,153 @@
+﻿@model ArticleModel
+
+@Html.ValidationSummary(false)
+@Html.HiddenFor(model => model.Id)
+
+<div class="tabbable tabbable-custom tabbable-full-width">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#tab_1" data-toggle="tab">基本信息</a>
+        </li>
+        <li>
+            <a href="#tab_2" data-toggle="tab">搜索引擎优化</a>
+        </li>
+        <li>
+            <a href="#tab_3" data-toggle="tab">评论</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab_1">
+            <div class="form-body">
+                <div class="form-group">
+                    <label class="control-label col-md-2">标题</label>
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(t => t.Title, new { @class = "form-control" })
+                        <span class="help-block">
+                            @Html.ValidationMessageFor(t => t.Title)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">简短描述</label>
+                    <div class="col-md-5">
+                        @Html.TextAreaFor(t => t.ShortDescription, new { @class = "form-control", @rows = 4 })
+                        <span class="help-block">
+                            @Html.ValidationMessageFor(t => t.ShortDescription)
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">封面图</label>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.PictureId, "Picture")
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">正文</label>
+                    <div class="col-md-4">
+                        @Html.EditorFor(t => t.FullDescription, "RichEditor")
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">分类</label>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(model => model.CategoryId, Model.Categories, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">标签</label>
+                    <div class="col-md-3">
+                        @Html.CheckBoxListFor(t => t.SelectedTags, DisplayDirection.Horizon)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">置顶显示</label>
+                    <div class="col-md-4">
+                        <div class="checkbox-list">
+                            <label class="checkbox-inline">
+                                @*<div class="checker" id="uniform-inlineCheckbox21">
+                        <span class="">*@
+                                @Html.CheckBoxFor(t => t.ShowOnTop)
+                                @*</span>
+                        </div>*@
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">允许评论</label>
+                    <div class="col-md-4">
+                        <div class="checkbox-list">
+                            <label class="checkbox-inline">
+                                @*<div class="checker" id="uniform-inlineCheckbox21">
+                        <span class="">*@
+                                @Html.CheckBoxFor(t => t.AllowComment)
+                                @*</span>
+                        </div>*@
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">已发布</label>
+                    <div class="col-md-4">
+                        <div class="checkbox-list">
+                            <label class="checkbox-inline">
+                                @*<div class="checker" id="uniform-inlineCheckbox21">
+                                    <span class="">*@
+                                @Html.CheckBoxFor(t => t.Published)
+                                @*</span>
+                                    </div>*@
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                @if (Model.Id > 0)
+                {
+                    <div class="form-group">
+                        <label class="control-label col-md-2">创建日期</label>
+                        <div class="col-md-4">
+                            <p class="form-control-static">@Model.CreatedOnDate</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">最后更新日期</label>
+                        <div class="col-md-4">
+                            <p class="form-control-static">@Model.UpdatedOnDate</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="tab-pane" id="tab_2">
+            <div class="form-body">
+                <div class="form-group">
+                    <label class="control-label col-md-2">Meta 标题</label>
+                    <div class="col-md-4">
+                        @Html.TextAreaFor(t => t.MetaTitle, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Meta 关键字</label>
+                    <div class="col-md-4">
+                        @Html.TextAreaFor(t => t.MetaKeywords, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Meta 描述</label>
+                    <div class="col-md-4">
+                        @Html.TextAreaFor(t => t.MetaDescription, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab_3">
+            <div style="margin:0 20px;">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

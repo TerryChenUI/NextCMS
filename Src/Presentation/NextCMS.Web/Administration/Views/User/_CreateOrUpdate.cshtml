@@ -1,0 +1,131 @@
+﻿@model UserModel
+
+@Html.ValidationSummary(false)
+@Html.HiddenFor(model => model.Id)
+
+<div class="tabbable tabbable-custom tabbable-full-width">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#tab_1" data-toggle="tab">基本信息</a>
+        </li>
+        <li>
+            <a href="#tab_2" data-toggle="tab">角色</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab_1">
+            <div class="form-body">
+                <div class="form-group">
+                    <label class="control-label col-md-2">用户名</label>
+                    <div class="col-md-3">
+                        @if (Model.Id > 0)
+                        {
+                            <p class="form-control-static">@Model.UserName</p> 
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(t => t.UserName, new { @class = "form-control" })
+                            <span class="help-block">
+                                @Html.ValidationMessageFor(t => t.UserName)
+                            </span>
+                        }
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">电子邮箱</label>
+                    <div class="col-md-3">
+                        @if (Model.Id > 0)
+                        {
+                            <p class="form-control-static">@Model.Email</p>
+                        }
+                        else
+                        {
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                                @Html.TextBoxFor(t => t.Email, new { @class = "form-control" })
+                            </div>
+                            <span class="help-block">
+                                @Html.ValidationMessageFor(t => t.Email)
+                            </span>
+                        }
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">密码</label>
+                    <div class="col-md-3">
+                        @Html.PasswordFor(t => t.Password, new { @class = "form-control", value = Model.Password })
+                        <span class="help-block">
+                            @Html.ValidationMessageFor(t => t.Password)
+                        </span>
+                    </div>
+                    @if (Model.Id > 0)
+                    {
+                        <div class="col-md-3">
+                            <input type="submit" name="changepassword" class="btn green" value="修改密码" />
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">电话号码</label>
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(t => t.Phone, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">已启用</label>
+                    <div class="col-md-3">
+                        <div class="checkbox-list">
+                            <label class="checkbox-inline">
+                                @Html.CheckBoxFor(t => t.Active)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                @if (Model.Id > 0)
+                {
+                    @Html.HiddenFor(t => t.UserName)
+                    @Html.HiddenFor(t => t.Email)
+                                  
+                    <div class="form-group">
+                        <label class="control-label col-md-2">注册日期</label>
+                        <div class="col-md-3">
+                            <p class="form-control-static">@Model.RegisterDate</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">更新日期</label>
+                        <div class="col-md-3">
+                            <p class="form-control-static">@Model.UpdateDate</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">最后激活时间</label>
+                        <div class="col-md-3">
+                            <p class="form-control-static">@Model.LastActivityDate</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">最后登录Ip地址</label>
+                        <div class="col-md-3">
+                            <p class="form-control-static">@Model.LastIpAddress</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">最后登录时间</label>
+                        <div class="col-md-3">
+                            <p class="form-control-static">@Model.LastLoginDate</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="tab-pane" id="tab_2">
+            <div class="check-horizon">
+                @Html.CheckBoxListFor(t => t.SelectedRoles, DisplayDirection.Horizon)
+            </div>
+        </div>
+    </div>
+</div>

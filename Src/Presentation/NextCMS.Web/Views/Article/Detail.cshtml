@@ -1,0 +1,40 @@
+﻿@model ArticleDetailModel
+
+@{
+    ViewBag.Title = string.Format("{0} {1} {2}", Model.Article.Title, this.WorkContext.GeneralSettings.Separator, this.WorkContext.GeneralSettings.SiteTitle);
+}
+
+<div class="container">
+    <div class="main">
+        <div class="content single-content">
+            <div class="breadcrumbs">你的位置：<a href="@Url.Action("Index", "Home")" title="NextCMS">NextCMS</a> <small>&gt;</small> <a href="@Url.Action("List", "Article", new { id = Model.Article.CategoryId })" title="@Model.Article.CategoryName">@Model.Article.CategoryName</a> <small>&gt;</small> <span class="muted">@Model.Article.Title</span></div>
+            <div class="article-header">
+                <h1>@Model.Article.Title</h1>
+                <div class="post-meta">
+                    <span class="post-date">@Model.Article.Author - 发布于 @Model.Article.CreateDate </span>
+                    <span class="post-category">
+                        @if (!string.IsNullOrEmpty(Model.Article.CategoryName))
+                        {
+                            <a href="@Url.Action("List", "Article", new { id = Model.Article.CategoryId })">@Model.Article.CategoryName</a>
+                        }
+                    </span>
+                    <span class="post-views"><a href="@Url.Action("Detail", "Article", new { id = Model.Article.Id })">@(Model.Article.Views)次阅读</a></span>
+                    <span class="post-comment"><a href="@Url.Action("Detail", "Article", new { id = Model.Article.Id })">@(Model.Article.CommentCount)条评论</a></span>
+                </div>
+            </div>   
+            <div class="article-content">
+                <div class="post-summary">
+                    <p>文章概要：</p>@Html.Raw(Model.Article.ShortDescription)
+                </div>
+                <div class="post-content">
+                    <p>@Html.Raw(Model.Article.FullDescription)</p>
+                </div>
+            </div> 
+        </div>
+        
+        <div class="sidebar">
+            @Html.Action("HotArticle", "Article")
+            @Html.Action("CommentArticle", "Article")
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    @Html.Action("TopMenu", "Common")
+
+    <div class="container">
+        <div class="speedbar">
+            <div class="pull-right">
+                <i class="icon-user icon12"></i> <a href="http://www.zan3.com/wp-login.php">登录</a>
+            </div>
+            <div class="toptip"><strong class="text-success">最新消息：</strong>NextCMS改版上线啦！！！欢迎各位好友体验/ 博文将分享精品web开发教程！ <a href="http://list.qq.com/cgi-bin/qf_invite?id=d0e2537c0990ea42453fef6865a477fe5860e0974dd31d50">订阅我们地址-&gt;&gt;如果你也有好的资源请联系我！分享给大家</a></div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    @Html.Action("Footer", "Common")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
