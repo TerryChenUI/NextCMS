@@ -45,7 +45,7 @@ namespace NextCMS.Services.Catalog
         /// <param name="pageSize">每页个数</param>
         public virtual IPagedList<Article> GetAllArticle(string title = null, int categoryId = 0, int tagId = 0, bool showHidden = false, int pageIndex = 0, int pageSize = int.MaxValue)
         {
-            var query = _articleRepository.Table;
+            var query = _articleRepository.Table.Where(t => t.Published);
 
             if (!string.IsNullOrEmpty(title))
                 query = query.Where(t => t.Title.ToLower().Contains(title.ToLower()));
@@ -72,7 +72,7 @@ namespace NextCMS.Services.Catalog
         /// <param name="tagId">标签</param>
         public virtual IQueryable<Article> GetAllArticle(string title = null, int categoryId = 0, int tagId = 0)
         {
-            var query = _articleRepository.Table.Where(t => t.Published);
+            var query = _articleRepository.Table;
 
             if (!string.IsNullOrEmpty(title))
                 query = query.Where(t => t.Title.ToLower().Contains(title.ToLower()));
